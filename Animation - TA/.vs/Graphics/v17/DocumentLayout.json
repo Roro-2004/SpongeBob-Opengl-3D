@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|d:\\uni\\graphics\\assignment\\final\\spongebob-opengl-3d\\animation - ta\\graphics\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\graphics\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|solutionrelative:graphics\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\graphics\\graphicsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|solutionrelative:graphics\\graphicsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\graphics\\graphicsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|solutionrelative:graphics\\graphicsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|d:\\uni\\graphics\\assignment\\final\\spongebob-opengl-3d\\animation - ta\\graphics\\shaders\\simplefragmentshader.fragmentshader||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|solutionrelative:graphics\\shaders\\simplefragmentshader.fragmentshader||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\graphics\\shaders\\simplevertexshader.vertexshader||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|solutionrelative:graphics\\shaders\\simplevertexshader.vertexshader||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|d:\\uni\\graphics\\assignment\\final\\spongebob-opengl-3d\\animation - ta\\graphics\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F6600EA5-A7B0-425A-96E0-2448C6053140}|Graphics\\Graphics.csproj|solutionrelative:graphics\\texture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,36 +39,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Texture.cs",
+              "DocumentMoniker": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\Texture.cs",
+              "RelativeDocumentMoniker": "Graphics\\Texture.cs",
+              "ToolTip": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\Texture.cs",
+              "RelativeToolTip": "Graphics\\Texture.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwCYAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T05:07:17.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "SimpleVertexShader.vertexshader",
               "DocumentMoniker": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\Shaders\\SimpleVertexShader.vertexshader",
               "RelativeDocumentMoniker": "Graphics\\Shaders\\SimpleVertexShader.vertexshader",
               "ToolTip": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\Shaders\\SimpleVertexShader.vertexshader",
               "RelativeToolTip": "Graphics\\Shaders\\SimpleVertexShader.vertexshader",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-03-19T23:55:22.443Z"
+              "WhenOpened": "2025-03-21T04:16:51.118Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GraphicsForm.cs",
-              "DocumentMoniker": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\GraphicsForm.cs",
-              "RelativeDocumentMoniker": "Graphics\\GraphicsForm.cs",
-              "ToolTip": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\GraphicsForm.cs",
-              "RelativeToolTip": "Graphics\\GraphicsForm.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAmwCYAAAAbAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T23:36:13.02Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GraphicsForm.cs [Design]",
-              "DocumentMoniker": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\GraphicsForm.cs",
-              "RelativeDocumentMoniker": "Graphics\\GraphicsForm.cs",
-              "ToolTip": "C:\\Users\\ROAA\\Downloads\\Animation - TA\\Animation - TA\\Graphics\\GraphicsForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-19T23:36:05.369Z"
+              "Title": "SimpleFragmentShader.fragmentshader",
+              "DocumentMoniker": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\Shaders\\SimpleFragmentShader.fragmentshader",
+              "RelativeDocumentMoniker": "Graphics\\Shaders\\SimpleFragmentShader.fragmentshader",
+              "ToolTip": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\Shaders\\SimpleFragmentShader.fragmentshader",
+              "RelativeToolTip": "Graphics\\Shaders\\SimpleFragmentShader.fragmentshader",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAiwBEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-21T04:16:48.637Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -78,7 +83,7 @@
               "RelativeDocumentMoniker": "Graphics\\Renderer.cs",
               "ToolTip": "D:\\uni\\Graphics\\Assignment\\final\\SpongeBob-Opengl-3D\\Animation - TA\\Graphics\\Renderer.cs",
               "RelativeToolTip": "Graphics\\Renderer.cs",
-              "ViewState": "AQIAAOAAAAAAAAAAAAAgwO8AAAAXAAAA",
+              "ViewState": "AQIAACIBAAAAAAAAAAAAADkBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-19T23:35:56.788Z",
               "EditorCaption": ""

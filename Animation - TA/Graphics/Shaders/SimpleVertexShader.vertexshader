@@ -3,16 +3,19 @@
 
 layout(location = 0) in vec3 vertexPosition_modelspace;
 layout(location = 1) in vec3 vertexColor;
+layout(location = 2) in vec2 vertexTex;
 out vec3 pixelcolor;
 
 
 uniform mat4 model_mat;
 uniform mat4 view_mat;
 uniform mat4 projection_mat;
+out vec2 Tex;
 void main(){
 
 	gl_Position = projection_mat*view_mat*model_mat *vec4(vertexPosition_modelspace,1);
 	pixelcolor = vertexColor;
+	Tex = vertexTex;
 }
 
 

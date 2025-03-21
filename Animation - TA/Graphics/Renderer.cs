@@ -19,6 +19,7 @@ using GlmNet;
 
 using System.IO;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace Graphics
 {
@@ -35,10 +36,12 @@ namespace Graphics
         int shader_model_mat_id;
         int shader_view_mat_id;
         int shader_projection_mat_id;
+        uint pants_id;
         public float translationX = 0.0f;
         public float translationY = 0.0f;
         public float translationZ = 0.0f;
         Stopwatch timer = Stopwatch.StartNew();
+        Texture pants;
         vec3 triangleCenter;
 
         // Helper method to generate circle vertices
@@ -72,7 +75,9 @@ namespace Graphics
         {
             string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
             sh = new Shader(projectPath + "\\Shaders\\SimpleVertexShader.vertexshader", projectPath + "\\Shaders\\SimpleFragmentShader.fragmentshader");
-            Gl.glClearColor(0, 0, 0.4f, 1);
+            pants = new Texture(projectPath + "\\Textures\\Texture.png", 1);
+            Gl.glClearColor(0.5f, 0.7f, 1.0f, 1.0f);
+            
             float[] verts = {
 
     // ------------------- Front Face -------------------
@@ -169,12 +174,7 @@ namespace Graphics
     -0.5f, -0.5f,  0.3f, 0.65f, 0.16f, 0.16f, // Front-left
     -0.5f, -0.5f, -0.3f, 0.65f, 0.16f, 0.16f, // Back-left*/
 
-    // ------------------- Belt -------------------
-        // Black belt positioned in front of the pants (z = 0.35f instead of 0.3f)
-    -0.5f,  0.0f,  0.3f, 0f, 0f, 0f, // Mid-left
-     0.5f,  0.0f,  0.3f,0f, 0f, 0f, // Mid-right
-     0.5f, -0.5f,  0.3f, 0f, 0f, 0f, // Bottom-right
-    -0.5f, -0.5f,  0.3f,0f, 0f, 0f, // Bottom-left
+ 
     
         // ------------------- Eyes -------------------
      // Left Eye
@@ -202,14 +202,6 @@ namespace Graphics
         // 0.25f,  0.7f,  0.31f, 0.0f, 0.0f, 0.0f, // Top-right
 
            // ------------------- Legs -------------------
-    // Left Leg (Cylinder approximated with 8 segments)
-    // Front part of cylinder
-   /* -0.3f, -0.5f, 0.3f, 1.0f, 1.0f, 0.0f,
-    -0.3f, -1.0f, 0.3f, 1.0f, 1.0f, 0.0f,
-    -0.33f, -0.5f, 0.3f, 1.0f, 1.0f, 0.0f,
-    -0.33f, -0.5f, 0.3f, 1.0f, 1.0f, 0.0f,
-    -0.3f, -1.0f, 0.3f, 1.0f, 1.0f, 0.0f,
-    -0.33f, -1.0f, 0.3f, 1.0f, 1.0f, 0.0f,*/
 
             // Front Right Leg
          0.2f, -0.6f,  0.2f, 1.0f, 1.0f, 0.0f,
@@ -245,10 +237,21 @@ namespace Graphics
 
 
 
+
             };
+            // Belt Vertex Data (Position, Color, Texture Coordinates)
+            float[] beltVertices = {
+    //   X     Y     Z      R   G   B   S   T
+    -0.5f,  0.0f,  0.35f,  0f, 0f, 0f,  0.1f, 0.9f,  // Mid-left
+     0.5f,  0.0f,  0.35f,  0f, 0f, 0f,   0.9f,  0.9f,  // Mid-right
+     0.5f, -0.5f,  0.35f,  0f, 0f, 0f,   0.9f, 0.25f,  // Bottom-right
+    -0.5f, -0.5f,  0.35f,  0f, 0f, 0f,  0.0f, 0.25f   // Bottom-left
+};
+
             vertexBufferID = GPU.GenerateBuffer(verts);
+            pants_id = GPU.GenerateBuffer(beltVertices);
             //m = new mat4(1);
-            triangleCenter = new vec3(0, 0, 0);
+            triangleCenter = new vec3(0, 0.25f, 0);
 
             //ProjectionMatrix = glm.perspective(FOV, Width / Height, Near, Far);
             p = glm.perspective(45, 4.0f / 3.0f, 0.1f, 100.0f);
@@ -273,6 +276,7 @@ namespace Graphics
             shader_model_mat_id = Gl.glGetUniformLocation(sh.ID, "model_mat");
             shader_view_mat_id = Gl.glGetUniformLocation(sh.ID, "view_mat");
             shader_projection_mat_id = Gl.glGetUniformLocation(sh.ID, "projection_mat");
+           
 
             //Gl.glUniformMatrix4fv(shader_model_mat_id, 1, Gl.GL_FALSE, m.to_array());
             Gl.glUniformMatrix4fv(shader_view_mat_id, 1, Gl.GL_FALSE, v.to_array());
@@ -287,7 +291,7 @@ namespace Graphics
         public void Draw()
         {
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
-
+            Gl.glBindBuffer(Gl.GL_ARRAY_BUFFER, vertexBufferID);
             Gl.glEnableVertexAttribArray(0);
             Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 6 * sizeof(float), (IntPtr)0);
             Gl.glEnableVertexAttribArray(1);
@@ -296,29 +300,41 @@ namespace Graphics
             Gl.glUniformMatrix4fv(shader_model_mat_id, 1, Gl.GL_FALSE, m.to_array());
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 30); // yellow body
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 30, 30); // brown pants
-            Gl.glDrawArrays(Gl.GL_QUADS, 60, 4); //black detail
-            Gl.glDrawArrays(Gl.GL_TRIANGLES, 64, 12); // eyes
+           // Gl.glDrawArrays(Gl.GL_QUADS, 60, 4); //black detail
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 60, 12); // eyes
             Gl.glLineWidth(2.0f);  // Makes the line thicker
-            Gl.glDrawArrays(Gl.GL_LINE_STRIP, 76, 2); // mouth
+            Gl.glDrawArrays(Gl.GL_LINE_STRIP, 72, 2); // mouth
             Gl.glPointSize(4.0f);
-            Gl.glDrawArrays(Gl.GL_POINTS, 78, 2); // pupils
+            Gl.glDrawArrays(Gl.GL_POINTS, 74, 2); // pupils
             Gl.glPointSize(4.0f);
-            Gl.glDrawArrays(Gl.GL_LINES, 80, 12); // legs
+            Gl.glDrawArrays(Gl.GL_LINES, 76, 12); // legs
             Gl.glLineWidth(5.0f);
-            Gl.glDrawArrays(Gl.GL_POLYGON, 92, 4); // teeth
-            Gl.glDrawArrays(Gl.GL_POLYGON, 96, 4); // teeth*/
-
+            Gl.glDrawArrays(Gl.GL_POLYGON, 88, 4); // teeth
+            Gl.glDrawArrays(Gl.GL_POLYGON, 92, 4); // teeth*/
             // Gl.glDrawArrays(Gl.GL_TRIANGLES, 78, 4); // 72 vertices (12 per face × 6 faces)
             // Gl.glDrawArrays(Gl.GL_TRIANGLES, 82, 4); // 72 vertices (12 per face × 6 faces)
             // Gl.glDrawArrays(Gl.GL_TRIANGLES, 86, 6); // 72 vertices (12 per face × 6 faces)
 
+            Gl.glBindBuffer(Gl.GL_ARRAY_BUFFER, pants_id);
 
+            Gl.glUniformMatrix4fv(shader_model_mat_id, 1, Gl.GL_FALSE, m.to_array());
+
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)0);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
+
+            pants.Bind();
+            Gl.glDrawArrays(Gl.GL_QUADS, 0, 4);
 
             Gl.glDisableVertexAttribArray(0);
             Gl.glDisableVertexAttribArray(1);
+            Gl.glDisableVertexAttribArray(2);
         }
 
-        const float rotation_speed = 0.1f;
+        const float rotation_speed = 5.0f;
         float rotationAngle = 0;
         public void Update()
         {
@@ -328,8 +344,8 @@ namespace Graphics
 
             List<mat4> transformations = new List<mat4>();
             //transformations.Add(glm.translate(new mat4(1), -1 * triangleCenter));
-            transformations.Add(glm.rotate(rotationAngle, new vec3(0, 0, 1)));
-            //transformations.Add(glm.translate(new mat4(1), triangleCenter));
+            transformations.Add(glm.rotate(rotationAngle, new vec3(0, 1.0f, 0)));
+            transformations.Add(glm.translate(new mat4(1), triangleCenter));
             transformations.Add(glm.translate(new mat4(1), new vec3(translationX, translationY, translationZ)));
 
             m = MathHelper.MultiplyMatrices(transformations);
